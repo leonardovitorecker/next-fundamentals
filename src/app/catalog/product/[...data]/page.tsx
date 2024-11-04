@@ -1,11 +1,21 @@
+"use client";
 interface ProductProps {
   params: {
     data: string[];
   };
 }
 
+// Server Components => A gente não USA JavaScript no lado do cliente
+// Client Components => O JavaScript é enviado ao navegador (client)
+
 export default function Product({ params }: ProductProps) {
   const [productId, size, color] = params.data;
+
+  console.log(params);
+
+  function addToCart() {
+    console.log("Added to cart");
+  }
 
   return (
     <div>
@@ -13,6 +23,7 @@ export default function Product({ params }: ProductProps) {
       <p>Product ID: {productId}</p>
       <p>Size: {size}</p>
       <p>Color: {color}</p>
+      <button onClick={addToCart}>Add to Cart</button>
     </div>
   );
 }
