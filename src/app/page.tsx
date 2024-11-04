@@ -1,5 +1,9 @@
-import Image from "next/image";
+export default async function Home() {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  const response = await fetch(
+    "https://api.github.com/users/leonardovitorecker"
+  );
 
-export default function Home() {
-  return <h1></h1>;
+  const user = await response.json();
+  return <pre>{JSON.stringify(user, null, 2)}</pre>;
 }
