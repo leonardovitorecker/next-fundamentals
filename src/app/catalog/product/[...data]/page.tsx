@@ -1,4 +1,5 @@
 import { AddToCartButton } from "./AddToCartButton";
+import { Test } from "./Test";
 
 interface ProductProps {
   params: {
@@ -27,7 +28,9 @@ export default async function Product({ params }: ProductProps) {
       <p>Product ID: {productId}</p>
       <p>Size: {size}</p>
       <p>Color: {color}</p>
-      <AddToCartButton />
+      <AddToCartButton>
+        <Test />
+      </AddToCartButton>
     </div>
   );
 }
