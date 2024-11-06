@@ -1,4 +1,5 @@
-"use client";
+import { AddToCartButton } from "./AddToCartButton";
+
 interface ProductProps {
   params: {
     data: string[];
@@ -11,14 +12,14 @@ interface ProductProps {
 // Streming SSR => Ler/escrever dados de forma parcial + Server-side Rendering
 
 // Renderizar um componente pelo lado do servidor de forma PARCIAL
-export default function Product({ params }: ProductProps) {
+export default async function Product({ params }: ProductProps) {
   const [productId, size, color] = params.data;
 
-  console.log(params);
+  const response = await fetch(
+    "https://api.github.com/users/leonardovitorecker"
+  );
 
-  function addToCart() {
-    console.log("Added to cart");
-  }
+  const user = await response.json();
 
   return (
     <div>
@@ -26,7 +27,7 @@ export default function Product({ params }: ProductProps) {
       <p>Product ID: {productId}</p>
       <p>Size: {size}</p>
       <p>Color: {color}</p>
-      <button onClick={addToCart}>Add to Cart</button>
+      <AddToCartButton />
     </div>
   );
 }
